@@ -1,9 +1,10 @@
 {% extends "blog/base.html" %}
+{% load blog_tags %}
  
 {% block title %}My Blog{% endblock %}
  
 {% block content %}
-  <h1>My Blog</h1>
+<a href="/" class="logo"><h1>My Site</h1></a>
   {% if tag %}
     <h2>Posts tagged with "{{ tag.name }}"</h2>
   {% endif %}
