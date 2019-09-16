@@ -18,4 +18,36 @@
         </form>
         {{ product.description|linebreaks }}
     </div>
+    <div class="product_reviews">
+        <h2><b>Reviews:</b></h2>
+    {% for review in reviews %}
+        <div class="review">
+            <p class="headline">
+                "{{ review.headline }}"
+            </p>
+            <p class="stars">
+                Rating: {{ review.rating }} out of 5 stars
+            </p>
+            <p class="info">
+                Review by {{ review.email|truncatechars:5 }}@... {{ review.updated }}
+            </p>
+            {{ review.comment|linebreaks }}
+        </div>
+    {% empty %}
+        <p>There are no reviews yet.</p>
+    {% endfor %}
+    <br>
+    {% if new_review %}
+        <h2>Your review has been submitted.</h2>
+    {% else %}
+        <h2>Add a new review</h2>
+        <form action="." method="post">
+            <div id="form_contents">
+                {{ review_form.as_p }}
+                {% csrf_token %}
+            <p><input id="after_form" type="submit" value="Add review"></p>
+            </div>
+        </form>
+    {% endif %}
+    </div>
 {% endblock %}

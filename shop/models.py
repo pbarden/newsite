@@ -37,3 +37,25 @@ class Product(models.Model):
     
     def get_absolute_url(self):
             return reverse('shop:product_detail', args=[self.id, self.slug])
+
+class Review(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='reviews')
+    email = models.EmailField()
+    headline = models.CharField(max_length=25)
+    rating = models.PositiveIntegerField(default=5)
+    comment = models.TextField()
+    approved = models.BooleanField(default=False)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ('created',)
+
+    def __str__(self):
+        return 'Review by {} on {}'.format(self.email, self.product)
+    
+    def get_stars(self):
+        stars = self.rating
+        if stars > 5:
+            stars = 5
+        return stars;

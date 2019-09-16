@@ -328,3 +328,51 @@ form div.field {
     color:#666;
     border-radius:4px;
 }
+
+/* reviews */
+.review {
+    padding:10px;
+}
+.review:nth-child(even) {
+    background:#efefef;
+}
+.review .headline {
+    font-weight:bold;
+    font-size:18px;
+    color:#666;
+}
+.review .stars {
+    font-weight:bold;
+    font-size:16px;
+    color:#666;
+}
+.review .info {
+    font-weight:bold;
+    font-size:12px;
+    color:#666;
+}
+.product_reviews {
+    padding: 25px;
+    clear: left;
+}
+#form_contents p label {
+    padding-top: 5px;
+    float: left;
+    min-width: 70px;
+}
+#form_contents p input {
+    float: none;
+    clear: left;
+}
+#after_form {
+    margin-left: 70px;
+    float: none;
+    clear: left;
+    width: 324px;
+}
+#id_comment {
+    width: 320px;
+    border-radius: 5px;
+    border-style: none;
+    background-color: #efefef;
+}
