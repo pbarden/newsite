@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+#from taggit.managers import TaggableManager
 
 # Create your models here.
 class Category(models.Model):
@@ -27,6 +28,7 @@ class Product(models.Model):
     available = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+    #tags = TaggableManager()
 
     class Meta:
         ordering = ('name',)
@@ -53,9 +55,3 @@ class Review(models.Model):
 
     def __str__(self):
         return 'Review by {} on {}'.format(self.email, self.product)
-    
-    def get_stars(self):
-        stars = self.rating
-        if stars > 5:
-            stars = 5
-        return stars;

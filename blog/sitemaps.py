@@ -1,6 +1,6 @@
 from django.contrib.sitemaps import Sitemap
 from .models import Post
-#from shop.models import Category, Product
+#from ..shop.models import Category, Product
 
 class PostSitemap(Sitemap):
     changefreq = 'weekly'

@@ -27,6 +27,8 @@ def product_detail(request, id, slug):
         if review_form.is_valid():
             new_review = review_form.save(commit=False)
             new_review.product = product
+            if new_review.rating > 5:
+                new_review.rating = 5
             new_review.save()
     else:
         review_form = ReviewForm()

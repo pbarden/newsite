@@ -29,7 +29,7 @@
                 Rating: {{ review.rating }} out of 5 stars
             </p>
             <p class="info">
-                Review by {{ review.email|truncatechars:5 }}@... {{ review.updated }}
+                Review by {{ review.email|truncatechars:5 }}@... {{ review.created }}
             </p>
             {{ review.comment|linebreaks }}
         </div>
