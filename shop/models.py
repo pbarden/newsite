@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse
-#from taggit.managers import TaggableManager
+from taggit.managers import TaggableManager
 
 # Create your models here.
 class Category(models.Model):
@@ -16,7 +16,7 @@ class Category(models.Model):
         return self.name
     
     def get_absolute_url(self):
-            return reverse('shop:product_list_by_category', args=[self.slug])
+        return reverse('shop:product_list_by_category', args=[self.slug])
 
 class Product(models.Model):
     category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE)
@@ -28,7 +28,7 @@ class Product(models.Model):
     available = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    #tags = TaggableManager()
+    tags = TaggableManager()
 
     class Meta:
         ordering = ('name',)
@@ -38,7 +38,7 @@ class Product(models.Model):
         return self.name
     
     def get_absolute_url(self):
-            return reverse('shop:product_detail', args=[self.id, self.slug])
+        return reverse('shop:product_detail', args=[self.id, self.slug])
 
 class Review(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='reviews')

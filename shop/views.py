@@ -3,6 +3,7 @@ from .models import Category, Product, Review
 from django import forms
 from .forms import ReviewForm
 from cart.forms import CartAddProductForm
+from django.db.models import Count
 
 # Create your views here.
 def product_list(request, category_slug=None):
@@ -32,5 +33,9 @@ def product_detail(request, id, slug):
             new_review.save()
     else:
         review_form = ReviewForm()
+    
+    product_tags_ids = product.tags.values_list('id', flat=True)
+    recommended_products = Product.objects.filter(available=True, tags__in=product_tags_ids).exclude(id=product.id)
+    recommended_products = recommended_products.annotate(same_tags=Count('tags')).order_by('-same_tags', '-updated')[:4]
 
-    return render(request, 'shop/product/detail.html', {'product': product, 'cart_product_form': cart_product_form, 'reviews': reviews, 'new_review': new_review, 'review_form': review_form})
+    return render(request, 'shop/product/detail.html', {'product': product, 'cart_product_form': cart_product_form, 'reviews': reviews, 'new_review': new_review, 'review_form': review_form, 'recommended_products': recommended_products})

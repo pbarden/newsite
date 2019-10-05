@@ -93,6 +93,7 @@ form p label, form p input {
 form p label {
     font-size:14px;
     padding-bottom:4px;
+    min-width: 62px;
 }
 
 form p input {
