@@ -116,25 +116,35 @@ ul.errorlist {
    padding:0;
 }
 
+html, body {
+    padding-bottom:30px;
+}
 
 #header {
     padding:10px 100px;
     font-size:18px;
     overflow:auto;
+    height: 60px;
+    background-color: gainsboro;
+}
+
+.logo {
+    padding-top:10px;
 }
 
 #subheader {
-    background:#ececec;
+    background:#a89999;
     color:#444;
     padding:15px 100px;
     overflow:auto;
+    font-weight: bold;
 }
 
 #header .logo {
     font-family: 'Ubuntu', sans-serif;
     float:left;
     color:#333;
-    font-size:22px;
+    font-size:32px;
     margin-right:10%;
 }
 
@@ -143,15 +153,36 @@ ul.errorlist {
     padding-top:4px;
 }
 
+footer {
+    width: 100%;
+    background-color: #363839;
+    height: 30px;
+    position: fixed;
+    bottom: 0;
+    color: whitesmoke;
+    padding-top: 14px;
+    font-size: 10px;
+    text-align: center;
+}
 #content {
-    padding:0 100px;
     overflow:hidden;
+    padding:0 30px;
+}
+@media (min-width: 780px) {
+    #content {
+        padding:0 100px;
+    }
 }
 
 #sidebar {
     width:220px;
-    padding:30px 20px 0 0;
+    margin:30px 20px 0 0;
+    padding: 10px;
     float:left;
+    border-radius: 4px;
+    border-style: solid;
+    border-color: #363839;
+    background-color: gainsboro;
 }
 
 #sidebar ul{
@@ -186,7 +217,8 @@ ul.errorlist {
 }
 
 .product-list .item {
-    width:25%;
+    max-width:25%;
+    min-width: 250px;
     padding:10px 20px 10px 0;
     float:left;
     text-align:center;
@@ -196,6 +228,13 @@ ul.errorlist {
 .product-list .item img {
     width:100%;
     margin-bottom:8px;
+}
+
+@media (max-width: 639px) {
+    .product-list .item {
+        margin-left: 20px;
+        min-width: 350px;
+    }
 }
 
 .product-detail {
@@ -282,6 +321,10 @@ ul.errorlist {
     margin:0;
 }
 
+.item {
+    padding: 10px;
+}
+
 .recommendations {
     clear:both;
 }
@@ -316,26 +359,18 @@ ul.errorlist {
     width:120px;
 }
 
-/* braintree hosted fields */
-form div.field {
-    font-size:13px;
-    color:#666;
-    width:300px;
-    height:22px;
-    margin-bottom:10px;
-    padding:6px 12px;
-    border:0;
-    background:#efefef;
-    color:#666;
-    border-radius:4px;
-}
-
 /* reviews */
 .review {
     padding:10px;
+    border-radius: 4px;
 }
 .review:nth-child(even) {
     background:#efefef;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.review:nth-child(odd) {
+    background:white;
 }
 .review .headline {
     font-weight:bold;
@@ -355,6 +390,10 @@ form div.field {
 .product_reviews {
     padding: 25px;
     clear: left;
+    margin-left: 10%;
+    margin-right: 10%;
+    border-radius: 4px;
+    background-color: #c7d8e4;
 }
 #form_contents p label {
     padding-top: 5px;
