@@ -173,6 +173,11 @@ footer {
         padding:0 100px;
     }
 }
+@media (min-width: 1500px) {
+    #content {
+        padding:0 200px;
+    }
+}
 
 #sidebar {
     width:220px;
